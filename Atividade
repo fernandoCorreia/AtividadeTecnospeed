@@ -1,0 +1,72 @@
+program Atividade;
+
+uses
+  SysUtils;
+
+var
+   nome, fim, sexo : string;
+   idade, i, qtdVogal: integer;
+
+function contaVogal(seuNome : string):integer;
+var
+   j, v : integer;
+
+Begin
+     v :=0;
+
+     // acha as vogais e faz a contagem total de vogais
+     for j := 0 to Length(seuNome) do
+        begin
+             if (copy(seuNome,j,1) = 'a') or
+                (copy(seuNome,j,1) = 'e') or
+                (copy(seuNome,j,1) = 'i') or
+                (copy(seuNome,j,1) = 'o') or
+                (copy(seuNome,j,1) = 'u') then
+                v := v +1
+        end;
+
+     Result := v;
+end;
+
+begin
+     i := 0;
+
+      writeln('Seja bem-vindo');
+      writeln('Primeiro me diga seu nome');
+      readln(nome);
+      writeln('ola ', nome);
+      writeln('Qual sua idade? ');
+      readln(idade);
+
+      // enquanto a idade for menor ou igual a zero não deixa passar
+      while idade <= 0 do
+        begin
+             i := i + 1;
+
+             writeln('Essa idade é impossível, não tente me enganar! Esta e a ', i , ' vez que vc tenta me enganar!');
+             readln(idade);
+        end;
+
+      // case para separar por grupo: crianca, adolescente ou adulto
+      Case idade of
+          1..11  : writeln('voce ainda e uma crianca!');
+          12..17 : writeln('voce e um adolescente');
+          18..99 : writeln('voce ja e um adulto');
+      end;
+
+      Writeln('você é do sexo Masculino(m) ou Feminino(F)?');
+      readln(Sexo);
+
+      if ((sexo <> 'm')  and
+          (Sexo <>'f' )) then
+         Begin
+              Writeln('preencha apenas com m ou f');
+              readln(sexo);
+         end;
+
+       //chamada da função conta vogal
+       qtdVogal := contaVogal(nome);
+       writeln('Apenas para curiosidade ', nome , ' seu nome tem ',qtdVogal, ' vogais');
+
+    Readln;
+end.
